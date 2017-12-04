@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="appAngular">
+<head>
+    <title>Validações de Formularios</title>
+    <link href="../css/estilos.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <style>
+        .nome.ng-valid {
+            color: green;
+        }
+
+        .nome.ng-dirty.ng-invalid-required {
+            background-color: red;
+        }
+
+        .nome.ng-dirty.ng-invalid-minlength {
+            color: orange;
+        }
+    </style>
+</head>
+<body ng-controller="Principal as ctl">
+
+    <h2>Validação de Formulários</h2>
+    <form ng-submit="ctl.submit()" name="alunosForm">
+        Nome:<br />
+        <input type="text"
+               class="nome"
+               name="anome"
+               ng-model="ctl.aluno.nome"
+               required
+               ng-minlength="4" />
+        <span ng-show="alunosForm.anome.$error.required">
+            Campo obrigatório
+        </span>
+        <br />
+        Curso:<br />
+        <input type="text" ng-model="ctl.aluno.curso" /><br />
+        <input type="submit" value="Enviar" />
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+            angular.module('appAngular', [])
+                .controller('Principal', [function () {
+                    var self = this;
+
+                    self.submit = function () {
+                        //O objeto aluno é criado implicitamente no form
+                        alert('Dados do segundo formulário: \n' + self.aluno.nome + '\n'
+                       + self.aluno.curso);
+                    };
+                }]);
+    </script>
+</body>
+</html>

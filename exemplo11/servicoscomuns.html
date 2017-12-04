@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="appAngular">
+<head>
+    <title>Formularios</title>
+    <link href="../css/estilos.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="Principal as ctl">
+
+    <h2>Exemplo de Serviços prontos</h2>
+    <button ng-click="ctl.mostrarLog()">Mostrar Log</button>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+            angular.module('appAngular', [])
+                .controller('Principal', ['$location', '$window',
+                    function ($location,$window) {
+                        var self = this;
+
+                    self.mostrarLog = function () {
+                        var url = $location.url();
+                        var absUrl = $location.absUrl();
+                        var protocol = $location.protocol();
+                        var mensagem = 'URL: ' + url + '\nURL Absoluto: ' + absUrl +
+                       '\nPROTOCOLO: ' + protocol;
+
+                        $window.alert(mensagem);
+                    };
+                }]);
+    </script>
+</body>
+</html>

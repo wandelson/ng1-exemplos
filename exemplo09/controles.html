@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="appAngular">
+<head>
+    <title>Formularios</title>
+    <link href="../css/estilos.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="Principal as ctl">
+    <h2>Controle de Alunos</h2>
+    <form ng-submit="ctl.submit()">
+        Nome:<br />
+        <input type="text" ng-model="ctl.nome" /><br />
+        Curso:<br />
+        <select ng-model="ctl.curso" 
+                ng-options="c.descricao for c in ctl.cursos"></select>
+        <br />
+        Período:<br />
+        <label>
+            <input type="radio" name="periodo" 
+                   ng-model="ctl.periodo" value="manhã" />Manhã
+        </label>
+        <label>
+            <input type="radio" name="periodo" 
+                   ng-model="ctl.periodo" value="noite" />Noite
+        </label>
+        <br />
+        <input type="submit" value="Enviar" />
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('appAngular', [])
+            .controller('Principal', [function () {
+                var self = this;
+
+                self.cursos = [
+                    { id: 1, descricao: 'Java' },
+                    { id: 2, descricao: 'NodeJS' },
+                    { id: 3, descricao: 'Excel' }
+                ];
+                self.submit = function () {
+                    alert('DADOS DO ALUNO:\nNome:' + self.nome + '\nCurso: ' +
+                    self.curso.descricao + '\nPeriodo: ' + self.periodo);
+                };
+            }]);
+    </script>
+</body>
+</html>

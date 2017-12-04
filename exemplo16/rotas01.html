@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Diretiva customizada</title>
+    <link href="../css/estilos.css" rel="stylesheet" />
+</head>
+<body ng-app="appAngular">
+    <h2>Rotas em Single Page App</h2>
+    <div>
+        <ul>
+            <li><a href="#/">Rota padrão (inicial)</a></li>
+            <li><a href="#/segunda">Segunda rota</a></li>
+            <li><a href="#/terceira">Terceira rota</a></li>
+            <li><a href="#/desconhecida">Rota inexistente</a></li>
+        </ul>
+        <div class="borda" ng-view></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+    <script type="text/javascript">
+        angular.module('appAngular', ['ngRoute'])
+        .config(['$routeProvider', function ($routeProvider) {
+            $routeProvider
+            .when('/', {
+                template: '<h2>Página Inicial</h2>'
+            })
+            .when('/segunda', {
+                template: '<h2>Segunda página</h2>'
+            })
+            .when('/terceira', {
+                template: '<h2>Terceira página</h2>'
+            })
+            .otherwise({ redirectTo: '/' });
+        }]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="appAngular">
+<head>
+    <title>Controller: arrays<</title>
+    <link href="../css/estilos.css" rel="stylesheet" />
+	<meta charset="utf-8" />
+</head>
+<body ng-controller="Principal as ctl">
+
+    <h2>Informações da empresa</h2>
+    <div ng-repeat="(atrib, dados) in ctl.empresa">
+        <strong><span ng-bind="atrib" /></strong>
+        <br />
+        CNPJ: {{dados.CNPJ}}<br />
+        Descrição: {{dados.Descricao}}<br />
+        Endereço<br />
+        Logradouro: {{dados.Endereco.Logradouro}}<br />
+        Número: {{dados.Endereco.Numero}}<br />
+        Cidade: {{dados.Endereco.Cidade}}<br />
+    </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script type="text/javascript">
+            angular.module('appAngular', [])
+                .controller('Principal', [function () {
+                    var self = this;
+                    self.empresa = {
+                        Atributos: {
+                            CNPJ: '00.965.778/0001-00',
+                            Descricao: 'Empresa XYZ Ltda',
+                            Endereco: {
+                                Logradouro: 'Avenida Paulista',
+                                Numero: '1101',
+                                Cidade: 'São Paulo'
+                            }
+                        }
+                    };
+
+                }]);
+        </script>
+</body>
+</html>
